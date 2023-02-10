@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Fragrance Quiz</title>
+  </head>
+  <body>
+    <h1>My Fragrance Quiz</h1>
+    <form>
+      <p>What is your favorite color?</p>
+      <input type="radio" name="color" value="red">Red<br>
+      <input type="radio" name="color" value="green">Green<br>
+      <input type="radio" name="color" value="blue">Blue<br>
+      <p>What is your favorite animal?</p>
+      <input type="radio" name="animal" value="cat">Cat<br>
+      <input type="radio" name="animal" value="dog">Dog<br>
+      <input type="radio" name="animal" value="bird">Bird<br>
+      <p>What is your favorite food?</p>
+      <input type="radio" name="food" value="pizza">Pizza<br>
+      <input type="radio" name="food" value="sushi">Sushi<br>
+      <input type="radio" name="food" value="steak">Steak<br>
+      <input type="submit" value="Submit">
+    </form> 
+    <div id="result" style="display: none;"></div>
+    
+    <script>
+      document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        // Collect the answers from the form
+        const color = document.querySelector('input[name="color"]:checked').value;
+        const animal = document.querySelector('input[name="animal"]:checked').value;
+        const food = document.querySelector('input[name="food"]:checked').value;
+        
+        // Calculate the score
+        let score = 0;
+        if (color === "red") { score++; }
+        if (animal === "cat") { score++; }
+        if (food === "pizza") { score++; }
+        
+        // Display the result
+        const resultElement = document.querySelector("#result");
+        resultElement.style.display = "block";
+        resultElement.innerHTML = `Your score is ${score} out of 3.`;
+      });
+    </script>
+  </body>
+</html>
